@@ -14,7 +14,7 @@ Als ik StringBuilder had gebruikt dan had ik het als volgt gedaan:
         return stringBuilder.toString();
     }*/
 
-public class MotorBoot extends Boot implements VrijVerhuurbaar {
+public class MotorBoot extends Boot {
     //attribuut
     private int maxSnelheid;
     private final static int DEFAULT_MIN_GRENS_MOTORBOOTLENGTE_VAARBEWIJS_VERPLICHT = 15;
@@ -25,9 +25,9 @@ public class MotorBoot extends Boot implements VrijVerhuurbaar {
 
 
     //constructor
-    protected MotorBoot(String naam, int lengte, int snelheid) {
+    public MotorBoot(String naam, int lengte, int maxSnelheid) {
         super(naam, lengte);
-        this.maxSnelheid = snelheid;
+        this.maxSnelheid = maxSnelheid;
     }
 
     //methoden
@@ -48,7 +48,7 @@ public class MotorBoot extends Boot implements VrijVerhuurbaar {
     @Override
     public String toString() {
         return super.toString().replace("Boot", "Motorboot") + String.format("\tVaarbewijs vereist: %s\n", this.isVaarbewijsPlichtig() ? "Ja" : "Nee") +
-                String.format("\tHuurprijs: %.2f\n", this.berekenHuurprijs());
+                String.format("\tHuurprijs: %.2f euro\n", this.berekenHuurprijs());
     }
 
 
