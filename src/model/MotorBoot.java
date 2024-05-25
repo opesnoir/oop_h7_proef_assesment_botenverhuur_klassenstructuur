@@ -1,5 +1,19 @@
 package model;
 
+//Naam, studentennummer en doel van de klasse
+/*Naam:   M.C.
+Studentennummer: 500241293
+Doel: Een Motorboot-klasse aanmaken, die de interface VrijVerhuurbaar implementeerd, waarin enkele attributen worden opgeslagen. Er is gekozen om diverse final (en static) attributen aan te maken om magic numbers te voorkomen. Verder wordt de methode getLengte uit de Boot-klasse gebruikt om te bepalen of de boot met of zonder vaarbewijs gehuurd mag worden en om de huurprijs te bepalen. Daarnaast is ervoor gekozen om String te gebruiken, omdat ik dat als leesbaarder ervaar in dit geval, vooral omdat er niets gesorteerd hoeft te worden. Ook wordt het woord 'boot' vervangen door 'motorboot'.
+
+Als ik StringBuilder had gebruikt dan had ik het als volgt gedaan:
+@Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder(super.toString().replace("Boot", "Motorboot"));
+        stringBuilder.append(String.format("\tVaarbewijs vereist: %s\n", this.isVaarbewijsPlichtig() ? "Ja" : "Nee"));
+        stringBuilder.append(String.format("\tHuurprijs: %.2f\n", this.berekenHuurprijs()));
+        return stringBuilder.toString();
+    }*/
+
 public class MotorBoot extends Boot implements VrijVerhuurbaar {
     //attribuut
     private int maxSnelheid;
@@ -31,19 +45,10 @@ public class MotorBoot extends Boot implements VrijVerhuurbaar {
         }
     }
 
-/*oude versie van schrijven, gebruik de versie met stringbuilder, omdat je hier meerdere zinnen samenvoegt
     @Override
     public String toString() {
-        return super.toString().replace("Boot", "Motorboot") +
-                String.format("\tVaarbewijs vereist: %b\n\tHuurprijs: %.2f\n", this.isVaarbewijsPlichtig()? "Ja" : "Nee", this.berekenHuurprijs());
-    }*/
-
-    @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder(super.toString().replace("Boot", "Motorboot"));
-        stringBuilder.append(String.format("\tVaarbewijs vereist: %s\n", this.isVaarbewijsPlichtig() ? "Ja" : "Nee"));
-        stringBuilder.append(String.format("\tHuurprijs: %.2f\n", this.berekenHuurprijs()));
-        return stringBuilder.toString();
+        return super.toString().replace("Boot", "Motorboot") + String.format("\tVaarbewijs vereist: %s\n", this.isVaarbewijsPlichtig() ? "Ja" : "Nee") +
+                String.format("\tHuurprijs: %.2f\n", this.berekenHuurprijs());
     }
 
 
