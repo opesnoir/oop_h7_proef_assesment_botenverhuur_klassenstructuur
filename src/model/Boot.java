@@ -1,5 +1,12 @@
 package model;
 
+//Naam, studentennummer en doel van de klasse
+/*Naam:   M.C.
+Studentennummer: 500241293
+Doel: De abstracte Boot-klasse implementeert Comparable en Vrijverhuurbaar. Comparable wordt later gebruikt om te sorteren. Deze klasse is tevens de hoofklasse (parent) van de Motorboot- en Zeilboot-klassen (children); zij hebben een 'is-a' relatie met Boot. De constructor van Boot is protected. Het statische attribuut lastId betreft een klasse-attribuut.
+
+De methode setLengte(lengte) test eerst of de lengte voldoet aan de minimum eisen alvorens deze toe te wijzen (al dan niet als minimum standaardlengte). Er is voor gekozen om twee default waarden final te maken om magic numbers te voorkomen.*/
+
 // implementeer interfaces Comparable en VrijVerhuurbaar
 public abstract class Boot implements Comparable<Boot>, VrijVerhuurbaar {
     //attributen
@@ -7,8 +14,8 @@ public abstract class Boot implements Comparable<Boot>, VrijVerhuurbaar {
     private int id;
     private String naam;
     private int lengte;
-    private final int DEFAULT_MIN_BOOT_LENGTE = 0;
-    private final int DEFAULT_BOOT_LENGTE = 5;
+    private final int DEFAULT_MIN_BOOT_LENGTE = 0; // toegevoegd om magic numbers te voorkomen
+    private final int DEFAULT_BOOT_LENGTE = 5; // toegevoegd om magic numbert te voorkomen
 
 
     //constructor
@@ -44,6 +51,12 @@ public abstract class Boot implements Comparable<Boot>, VrijVerhuurbaar {
 
     @Override
     public String toString() {
-        return String.format("Boot %d met de naam %s", this.id, this.naam); //this ervoor omdat het deze instantie betreft
+        return String.format("Boot %d met de naam %s\n", this.id, this.naam); //this ervoor omdat het deze instantie betreft, deze is zonder stringbuilder [je sorteert hier niks en je hebt hier ook niet meerdere zinnen die je aan elkaar wil plakken]
     }
+
+    //getter(s)
+    public int getLengte() {
+        return lengte;
+    }
+
 }
